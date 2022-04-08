@@ -1,10 +1,10 @@
-const btn = document.querySelectorAll('.menu_sub');
-btn.forEach(function(item, i) {
-item.parentElement.querySelector('.menu__link').addEventListener('click', function(e) {
-  e.preventDefault();
+const menu = document.querySelectorAll('.menu_sub');
+menu.forEach(function(item, i) {
+item.parentElement.querySelector('.menu__link').addEventListener('click', function(click) {
+  click.preventDefault();
   if (item.className == 'menu menu_sub') {
     item.className = 'menu menu_sub menu_active';
-    btn.forEach(function(itemOver, iOver) {
+    menu.forEach(function(itemOver, iOver) {
       if (iOver != i) {
         itemOver.className = 'menu menu_sub';
       }
