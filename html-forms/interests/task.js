@@ -1,36 +1,39 @@
-'use strict';
-
-function setCheckedForChilds(checkbox, checked) {
-    const liElement = checkbox.closest('li.interest');
-    Array.from(liElement.querySelectorAll('ul.interests input.interest__check')).forEach(element => {
-        element.checked = checked;
-    });
-}
-
-function setCheckedForParents(checkbox) {
-    const ulElement = checkbox.closest('ul.interests');
-    if (!ulElement) {
-        return;
-    }
-    const parentCheckbox = ulElement.closest('li.interest').querySelector('label input.interest__check');
-    let checkedExists = Boolean( ulElement.querySelector('li>label>input.interest__check:checked') );
-    let uncheckedExists = Boolean( ulElement.querySelector('li>label>input.interest__check:not(:checked)') );
-    if (checkedExists) {
-        parentCheckbox.checked = true;
-        parentCheckbox.indeterminate = uncheckedExists;
+function listActiv1 (listActiv2) {
+  let a = listActiv2.parentElement.parentElement.parentElement;
+  let b = listActiv2.parentElement.parentElement;
+  if (a.className == '') {
+    if (listActiv2.checked == true) {
+      const listActiv3 = b.querySelectorAll('.interest__check');
+      listActiv3.forEach(function(itemList2) {
+        itemList2.checked = true;
+      });
     } else {
-        parentCheckbox.checked = false;
-        parentCheckbox.indeterminate = false;
+      const listActiv3 = b.querySelectorAll('.interest__check');
+      listActiv3.forEach(function(itemList2) {
+        itemList2.checked = false;
+      });
     }
-    setCheckedForParents(parentCheckbox);
+  } else {
+    const listActiv3 = a.querySelectorAll('.interest__check');
+    if (listActiv2.checked == true) {
+      let q = a.parentElement;
+      q.querySelector('.interest__check').checked = true;
+    } else {
+      let t = Array.from(listActiv3).some(elem => elem.checked == true);
+      if (t) {
+        let q = a.parentElement;
+        q.querySelector('.interest__check').checked = true;
+      } else {
+        let q = a.parentElement;
+        q.querySelector('.interest__check').checked = false;
+      }
+    }
+  }
 }
 
-function onChangeCheckbox() {
-    const checked = this.checked;
-    setCheckedForChilds(this, checked);
-    setCheckedForParents(this);
-}
-
-Array.from(document.querySelectorAll('.interest__check')).forEach(element => {
-    element.onchange = onChangeCheckbox
+const listActiv = document.querySelectorAll('.interest__check');
+listActiv.forEach(function(itemList, i) {
+itemList.addEventListener('click', function(click) {
+  console.log(listActiv1(itemList));
+}, false);
 });
