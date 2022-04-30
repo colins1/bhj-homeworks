@@ -9,13 +9,6 @@ document.addEventListener('click', function(click) {
     let textHTML = `<div class="tooltip" data-position="bottom" style="left: ${click.target.offsetLeft}px;">${click.target.title}</div>`;
     click.target.insertAdjacentHTML('afterEnd', textHTML);
     click.target.nextSibling.classList.add("tooltip_active");
-    if (allTooltip.length >= 1) {
-      allTooltip.forEach(function(tooltipRemove) {
-      if (tooltipRemove.parentNode.title != click.srcElement.title) {
-          tooltipRemove.remove();
-      }
-      });
-    }
   } else {
 
     if (tooltipSearch.previousSibling.innerText != click.target.innerText) {
