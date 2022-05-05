@@ -7,16 +7,16 @@ xhr.addEventListener('readystatechange', () => {
     img.classList.remove('loader_active');
     Object.entries(jsonCode.response.Valute).forEach(function(valute) {
 
-    let parent = document.querySelector('#items');
-    let divsItem = document.createElement('div');
+    const parent = document.querySelector('#items');
+    const divsItem = document.createElement('div');
     divsItem.className = 'item'
-    let divItemCode = document.createElement('div');
+    const divItemCode = document.createElement('div');
     divItemCode.className = 'item__code'
     divItemCode.textContent = valute[1].CharCode
-    let divItemValue = document.createElement('div');
+    const divItemValue = document.createElement('div');
     divItemValue.className = 'item__value'
     divItemValue.textContent = valute[1].Value
-    let divItemCurrency = document.createElement('div')
+    const divItemCurrency = document.createElement('div')
     divItemCurrency.className = 'item__currency'
     divItemCurrency.textContent = 'руб.'
 
