@@ -4,8 +4,8 @@ const xhr = new XMLHttpRequest();
 if (localStorage.user_id) {
  user();
 } else {
- formAuth.addEventListener("submit", (e) => {
-    e.preventDefault();
+ formAuth.addEventListener("submit", (event) => {
+    event.preventDefault();
     const formData = new FormData(formAuth);
     xhr.open("POST", formAuth.action);
     xhr.send(formData);
